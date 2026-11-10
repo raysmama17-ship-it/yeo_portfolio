@@ -1,0 +1,94 @@
+/* MY WORK-ONEPAGE: placement of the work.css components, measured from refs/slide_onepage.jpg */
+
+.op-title { --x: 63.0px; --y: 161.4px; --fs: 99.3px; --ls: -0.053em; --ls-light: -0.067em; --gap: 8px; }
+.op-calli { --x: 857px; --y: 214px; }
+.op-sub { --y: 272.2px; --fs: 30px; --ls: -0.01em; }
+.op-desc { --y: 317.4px; --fs: 17.5px; --lh: 27px; --ls: 0.012em; }
+.op-badges { --y: 411px; }
+
+/* framed screenshot; the torn bottom edge follows the tear drawn in again.jpg */
+.op-shot {
+  position: absolute;
+  left: 339px;
+  top: 505px;
+  width: 602px;
+  height: 1345px;
+  filter: drop-shadow(0 0 0.6px rgba(0, 0, 0, 0.32));
+}
+
+.op-shot .work-frame {
+  inset: 0;
+  box-shadow: none;
+  clip-path: polygon(0 0, 100% 0, 100% 1334px, 592px 1334px, 588px 1333px, 587px 1328px, 583px 1322px, 580px 1322px, 578px 1316px, 573px 1310px, 569px 1308px, 567px 1303px, 561px 1304px, 560px 1298px, 551px 1296px, 544px 1298px, 544px 1296px, 536px 1296px, 535px 1292px, 525px 1289px, 515px 1291px, 509px 1295px, 506px 1301px, 500px 1301px, 500px 1302px, 488px 1302px, 487px 1298px, 477px 1297px, 471px 1298px, 470px 1302px, 465px 1302px, 464px 1300px, 461px 1300px, 461px 1303px, 450px 1302px, 442px 1304px, 432px 1302px, 429px 1299px, 427px 1299px, 426px 1302px, 423px 1302px, 422px 1298px, 418px 1296px, 405px 1298px, 405px 1296px, 401px 1296px, 397px 1298px, 395px 1302px, 380px 1304px, 379px 1310px, 372px 1309px, 367px 1304px, 356px 1302px, 343px 1296px, 336px 1296px, 334px 1293px, 329px 1292px, 323px 1292px, 320px 1298px, 313px 1296px, 309px 1298px, 307px 1301px, 290px 1304px, 287px 1307px, 281px 1306px, 278px 1309px, 275px 1309px, 275px 1307px, 246px 1308px, 245px 1305px, 234px 1302px, 228px 1303px, 227px 1299px, 218px 1298px, 217px 1303px, 211px 1308px, 200px 1310px, 199px 1307px, 195px 1307px, 184px 1310px, 183px 1314px, 181px 1315px, 177px 1314px, 176px 1310px, 171px 1307px, 168px 1307px, 160px 1302px, 155px 1302px, 128px 1319px, 120px 1319px, 117px 1315px, 105px 1309px, 102px 1309px, 100px 1307px, 94px 1307px, 88px 1304px, 79px 1306px, 77px 1304px, 73px 1303px, 72px 1301px, 67px 1301px, 66px 1304px, 64px 1304px, 55px 1303px, 53px 1301px, 51px 1301px, 40px 1309px, 38px 1314px, 28px 1316px, 24px 1319px, 22px 1319px, 21px 1322px, 17px 1322px, 15px 1327px, 10px 1327px, 0 1327px);
+}
+
+.op-shot-view {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 583px;
+  height: 1335px;
+  overflow: hidden;
+}
+
+/* again.jpg carries its own 20px white frame: scale it by 583/780 and hide that frame */
+.op-shot-view img {
+  display: block;
+  width: 612.9px;
+  height: auto;
+  margin: -14.95px 0 0 -14.95px;
+}
+
+.op-note-a { left: 70px; top: 688px; width: 288px; height: 210px; --ls: -0.02em; }
+.op-note-b { left: 895px; top: 532px; width: 257px; height: 156px; --ls: -0.003em; }
+.op-note-c { left: 902px; top: 1287px; width: 306px; height: 215px; --ls: -0.012em; }
+.op-note-a, .op-note-b, .op-note-c { --fs: 16px; --lh: 23px; }
+.op-note-a p { --x: 29px; --y: 28.4px; }
+.op-note-b p { --x: 22px; --y: 20.4px; }
+.op-note-c p { --x: 25px; --y: 27.4px; }
+.op-note-a .work-dot.is-orange { --ml: 1px; }
+
+.op-dark-1 { left: 977px; top: 838px; width: 233px; height: 317px; --lh: 18px; }
+.op-dark-2 { left: 69px; top: 1243px; width: 232px; height: 355px; --lh: 23px; }
+.op-dark-1, .op-dark-2 { --fs: 16px; --ls: -0.01em; --nfs: 36px; }
+.op-dark-1 .n1 { --x: 25px; --y: 24.5px; }
+.op-dark-1 .t1 { --x: 59px; --y: 27.4px; }
+.op-dark-1 .n2 { --x: 22px; --y: 126.5px; }
+.op-dark-1 .t2 { --x: 61px; --y: 128.4px; }
+.op-dark-1 .n3 { --x: 21px; --y: 217.5px; }
+.op-dark-1 .t3 { --x: 62px; --y: 221.4px; }
+.op-dark-2 .n1 { --x: 17px; --y: 27.5px; }
+.op-dark-2 .t1 { --x: 53px; --y: 26.9px; }
+.op-dark-2 .n2 { --x: 17px; --y: 226.5px; }
+.op-dark-2 .t2 { --x: 53px; --y: 234.9px; }
+.op-dark-1 .s1 { --x: 28px; --y: 114px; --w: 180px; }
+.op-dark-1 .s2 { --x: 28px; --y: 200px; --w: 180px; }
+.op-dark-2 .s1 { --x: 25px; --y: 209px; --w: 180px; }
+
+.op-mark-1 { left: 382px; top: 580px; }
+.op-mark-2 { left: 893px; top: 906px; }
+
+.op-line-a { --x: 358px; --y: 688px; --w: 24px; }
+.op-line-b { --x: 866px; --y: 532px; --w: 29px; }
+
+.op-link {
+  left: 565px;
+  top: 1827px;
+  width: 376px;
+  height: 34px;
+  padding-left: 13px;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.004em;
+}
+
+.op-link::before {
+  border-left-color: #1a1a1a;
+}
+
+.op-link:hover::before,
+.op-link:focus-visible::before {
+  border-left-color: #ff5a00;
+}

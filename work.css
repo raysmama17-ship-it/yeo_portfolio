@@ -1,0 +1,297 @@
+/* Shared components of the three "MY WORK" pages (onepage / diary / story).
+   Positions are 1280px artboard coordinates measured from refs/slide_*.jpg;
+   each page's own css only places these components. */
+
+body:has(.work) {
+  background: #f1edee;
+}
+
+.work {
+  background: #f1edee;
+  color: #111;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.work *,
+.work *::before,
+.work *::after {
+  box-sizing: border-box;
+}
+
+.work p,
+.work h1,
+.work h2 {
+  margin: 0;
+}
+
+/* ---------- header: MY WORK-PAGENAME + "story" calligraphy ---------- */
+.work-title {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 1;
+  font: 700 var(--fs) / 1 "GmarketSans", sans-serif;
+  letter-spacing: var(--ls, 0);
+  color: #ff5a00;
+  white-space: nowrap;
+  transform-origin: 0 0;
+  transform: scale(var(--sx, 1), var(--sy, 1));
+}
+
+.work-title span {
+  margin-left: var(--gap, 0);
+  font-weight: 300;
+  letter-spacing: var(--ls-light, var(--ls, 0));
+}
+
+.work-calli {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 2;
+  width: 317px;
+  height: auto;
+  pointer-events: none;
+}
+
+.work-sub {
+  position: absolute;
+  left: 70px;
+  top: var(--y);
+  font-size: var(--fs, 27px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--ls, -0.02em);
+  color: #111;
+  white-space: nowrap;
+}
+
+.work-sub span {
+  font-size: var(--fs2, 1em);
+  font-weight: 400;
+  letter-spacing: var(--ls2, var(--ls, -0.02em));
+}
+
+.work-desc {
+  position: absolute;
+  left: 70px;
+  top: var(--y);
+  font-size: var(--fs, 16px);
+  line-height: var(--lh, 27px);
+  letter-spacing: var(--ls, -0.01em);
+  color: #111;
+  white-space: nowrap;
+}
+
+.work-desc b {
+  font-weight: 700;
+}
+
+.work-desc small {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+}
+
+/* YEO / GPT round badges */
+.work-badges {
+  position: absolute;
+  left: 69px;
+  top: var(--y);
+  display: flex;
+  gap: 9px;
+}
+
+.work-badge {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  background: #ff5a00;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  letter-spacing: -0.01em;
+}
+
+.work-badge.is-gpt {
+  background: #101010;
+}
+
+/* ---------- framed main images ---------- */
+.work-frame {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.055), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.work-frame > img,
+.work-card-img > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* white story cards (bigger, softer shadow) */
+.work-card {
+  position: absolute;
+  background: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.work-card-img {
+  position: absolute;
+  overflow: hidden;
+  background: #222;
+}
+
+/* ---------- notes ---------- */
+.work-note {
+  position: absolute;
+  z-index: 3;
+  background: #fff;
+  color: #111;
+  font-size: var(--fs, 15px);
+  font-weight: 500;
+  line-height: var(--lh, 23px);
+  letter-spacing: var(--ls, -0.02em);
+  white-space: nowrap;
+}
+
+.work-note.is-dark {
+  background: #101010;
+  color: #f4f4f4;
+  font-weight: 400;
+}
+
+.work-note b {
+  font-weight: 700;
+}
+
+/* absolutely placed text / numeral inside a note or card (x, y relative to it) */
+.work-note p,
+.work-card p,
+.work-num {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+}
+
+/* large thin numerals: 1, 2, 3 ... */
+.work-num {
+  font-size: var(--nfs, 36px);
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.work-num.is-italic {
+  transform: skewX(-11deg);
+  transform-origin: 0 100%;
+}
+
+/* short orange underscore after the story numerals */
+.work-bar {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 20px;
+  height: 3px;
+  background: #ff5a00;
+}
+
+/* thin dotted separator between numbered notes */
+.work-sep {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #7a7a7a 0 1px, transparent 1px 2px);
+}
+
+/* small round dots closing a note: ● orange, ● black */
+.work-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-left: var(--ml, 5px);
+  border-radius: 50%;
+  background: #101010;
+  vertical-align: -0.02em;
+}
+
+.work-dot.is-orange {
+  background: #ff5a00;
+}
+
+/* the same dot used as a marker on top of an image */
+.work-mark {
+  position: absolute;
+  z-index: 3;
+  margin: 0;
+}
+
+/* thin connector lines between a note and the image / card */
+.work-line {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 4;
+  width: var(--w);
+  height: 1px;
+  background: #fff;
+}
+
+.work-line.is-dark {
+  background: #101010;
+}
+
+/* orange link buttons (▸ url / ▸ story.txt) */
+.work-link {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background: #ff5a00;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.work-link::before {
+  content: "";
+  flex: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 7px;
+  border-color: transparent transparent transparent currentColor;
+}
+
+.work-link:hover,
+.work-link:focus-visible {
+  background: #101010;
+  color: #fff;
+}
+
+.work-link:focus-visible {
+  outline: 2px solid #ff5a00;
+  outline-offset: 2px;
+}
+
+/* round orange label (story "최종") */
+.work-tag {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ff5a00;
+  color: #fff;
+  font-weight: 700;
+}

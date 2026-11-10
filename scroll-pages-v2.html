@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>스크롤 페이지 뷰어 v2</title>
+<style>
+  html, body { height:100%; margin:0; overflow:hidden; background:#111; touch-action:none; font-family:-apple-system,"Pretendard","Noto Sans KR",sans-serif; }
+  #stage { position:absolute; left:50%; top:50%; width:1280px; height:860px; overflow:hidden; transform-origin:center center; background:#000; }
+  #track { width:1280px; transition:transform .7s cubic-bezier(.65,0,.35,1); }
+  .page { position:relative; width:1280px; height:860px; overflow:hidden; background:#fff; }
+  .canvas { position:absolute; }
+  .canvas iframe { position:absolute; left:0; top:0; border:0; transform-origin:0 0; background:#fff; }
+  #dots { position:fixed; right:18px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:5; }
+  #dots i { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.35); box-shadow:0 0 0 1px rgba(0,0,0,.3); transition:.3s; }
+  #dots i.on { background:#fff; transform:scale(1.5); }
+</style>
+</head>
+<body>
+<div id="stage"><div id="track"></div></div>
+<div id="dots"></div>
+
+<script>
+/* ===== 여기만 수정하세요 =====
+   src : 각 페이지 html 파일 경로
+   w,h : 그 페이지의 원래 크기(px). 생략하면 자동 측정을 시도하고, 안 되면 1280x860으로 봅니다.
+   interactive:true : 페이지 안의 링크/버튼을 클릭할 수 있게 함 (http 서버에서 열 때만 스크롤 연동됨)
+   아래는 데모용 srcdoc 예시입니다. 실제로는  { src:'page1.html', w:1280, h:860 }  형태로 바꾸세요. */
+function demo(w, h, c1, c2, label) {
+  var lines = '';
+  for (var y = 0; y < h; y += 200) lines += '<div style="position:absolute;left:0;top:' + y + 'px;width:100%;border-top:2px dashed rgba(255,255,255,.5);font:24px sans-serif;color:#fff;padding:6px 12px;box-sizing:border-box">' + y + 'px</div>';
+  return '<!doctype html><meta charset="utf-8"><body style="margin:0;width:' + w + 'px;height:' + h + 'px;position:relative;overflow:hidden;background:linear-gradient(160deg,' + c1 + ',' + c2 + ')"><div style="position:absolute;left:0;right:0;top:50px;text-align:center;font:700 64px sans-serif;color:#fff">' + label + '<br><span style="font-size:28px;font-weight:400">' + w + ' × ' + h + '</span></div>' + lines;
+}
+var PAGES = [
+  { html: demo(1280, 860, '#4f46e5', '#9333ea', 'Page 1'), w:1280, h:860 },
+  { html: demo(1280, 860, '#0ea5e9', '#14b8a6', 'Page 2'), w:1280, h:860 },
+  { html: demo(1280, 860, '#f59e0b', '#ef4444', 'Page 3'), w:1280, h:860 },
+  { html: demo(1600, 1200, '#16a34a', '#065f46', 'Page 4 (큰 페이지)'), w:1600, h:1200 },
+  { html: demo(1920, 2400, '#db2777', '#7c3aed', 'Page 5 (큰 페이지)'), w:1920, h:2400 },
+  { html: demo(1440, 3200, '#1f2937', '#6b7280', 'Page 6 (마지막)'), w:1440, h:3200 }
+];
+/* ============================= */
+
+(function () {
+  var W = 1280, H = 860, DURATION = 800, GAP = 140;
+  var stage = document.getElementById('stage');
+  var track = document.getElementById('track');
+  var dotsBox = document.getElementById('dots');
+  var pages = [], index = 0, locked = false, lastWheel = 0;
+
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  function layout(st) {
+    var s = st.w > W ? W / st.w : 1;
+    var dw = st.w * s, dh = st.h * s;
+    st.max = Math.max(0, Math.round(dh - H));
+    st.target = clamp(st.target, 0, st.max);
+    st.cur = clamp(st.cur, 0, st.max);
+    var c = st.canvas.style;
+    c.width = dw + 'px'; c.height = dh + 'px';
+    c.left = (W - dw) / 2 + 'px';
+    c.top = (dh < H ? (H - dh) / 2 : 0) + 'px';
+    var f = st.f.style;
+    f.width = st.w + 'px'; f.height = st.h + 'px';
+    f.transform = 'scale(' + s + ')';
+    apply(st);
+  }
+
+  function apply(st) { st.canvas.style.transform = 'translateY(' + (-st.cur) + 'px)'; }
+
+  PAGES.forEach(function (p) {
+    var sec = document.createElement('section'); sec.className = 'page';
+    var canvas = document.createElement('div'); canvas.className = 'canvas';
+    var f = document.createElement('iframe');
+    f.setAttribute('scrolling', 'no');
+    if (!p.interactive) f.style.pointerEvents = 'none';
+    if (p.html) f.srcdoc = p.html; else f.src = p.src;
+    canvas.appendChild(f); sec.appendChild(canvas); track.appendChild(sec);
+    var st = { canvas: canvas, f: f, w: p.w || W, h: p.h || H, cur: 0, target: 0, max: 0 };
+    pages.push(st);
+    layout(st);
+    f.addEventListener('load', function () {
+      try {
+        var d = f.contentDocument;
+        if (!p.w) st.w = Math.max(d.documentElement.scrollWidth, W);
+        if (!p.h) st.h = Math.max(d.documentElement.scrollHeight, H);
+        if (p.interactive) d.addEventListener('wheel', onWheel, { passive: false });
+        layout(st);
+      } catch (e) { /* file:// 등 다른 출처면 측정 불가 → 지정한 w,h 사용 */ }
+    });
+    dotsBox.appendChild(document.createElement('i'));
+  });
+  var dots = dotsBox.children;
+
+  function fit() {
+    stage.style.transform = 'translate(-50%,-50%) scale(' + Math.min(innerWidth / W, innerHeight / H) + ')';
+  }
+
+  function render() {
+    track.style.transform = 'translateY(' + (-index * H) + 'px)';
+    for (var i = 0; i < dots.length; i++) dots[i].className = i === index ? 'on' : '';
+  }
+
+  function go(dir) {
+    if (locked) return;
+    var next = index + dir;
+    if (next < 0 || next > pages.length - 1) return;   // 첫 페이지의 위 / 마지막 페이지의 아래는 무시
+    index = next;
+    var st = pages[index];
+    st.target = st.cur = dir > 0 ? 0 : st.max;          // 아래로 오면 맨 위, 위로 오면 맨 아래부터 보이게
+    apply(st);
+    locked = true; render();
+    setTimeout(function () { locked = false; }, DURATION);
+  }
+
+  // 페이지 안쪽 스크롤이 남아 있으면 먼저 그걸 소비하고, 끝에 닿은 뒤 "새 스크롤 동작"에서 페이지를 넘김
+  function handle(dy, fresh) {
+    var st = pages[index], dir = dy > 0 ? 1 : -1;
+    var canScroll = dir > 0 ? st.target < st.max - 1 : st.target > 1;
+    if (canScroll) { st.target = clamp(st.target + dy, 0, st.max); return; }
+    if (fresh) go(dir);
+  }
+
+  function onWheel(e) {
+    e.preventDefault();
+    var dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    if (Math.abs(dy) < 1) return;
+    var now = Date.now(), fresh = now - lastWheel > GAP;
+    lastWheel = now;
+    handle(dy, fresh);
+  }
+
+  window.addEventListener('wheel', onWheel, { passive: false });
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') handle(120, true);
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') handle(-120, true);
+  });
+
+  var ty = null, total = 0, scrolled = false;
+  window.addEventListener('touchstart', function (e) { ty = e.touches[0].clientY; total = 0; scrolled = false; }, { passive: true });
+  window.addEventListener('touchmove', function (e) {
+    if (ty === null) return;
+    var y = e.touches[0].clientY, d = ty - y; ty = y; total += d;
+    var st = pages[index];
+    if (d > 0 ? st.target < st.max : st.target > 0) { st.target = clamp(st.target + d, 0, st.max); scrolled = true; }
+  }, { passive: true });
+  window.addEventListener('touchend', function () {
+    if (!scrolled && Math.abs(total) > 40) go(total > 0 ? 1 : -1);
+    ty = null;
+  }, { passive: true });
+
+  (function tick() {
+    var st = pages[index];
+    if (st.cur !== st.target) {
+      st.cur += (st.target - st.cur) * 0.2;
+      if (Math.abs(st.target - st.cur) < 0.5) st.cur = st.target;
+      apply(st);
+    }
+    requestAnimationFrame(tick);
+  })();
+
+  window.addEventListener('resize', fit);
+  fit(); render();
+})();
+</script>
+</body>
+</html>

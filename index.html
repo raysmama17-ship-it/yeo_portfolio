@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PORTFOLIO — YEO SANGHEE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <!-- every page (site.js PAGES) runs in its own iframe; one 1280x860 screen at a time -->
+  <main class="viewer-stage" id="stage">
+    <div class="viewer-track" id="track"></div>
+  </main>
+  <nav class="viewer-dots" id="dots" aria-label="페이지 인디케이터"></nav>
+
+  <script src="site.js" data-role="viewer"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

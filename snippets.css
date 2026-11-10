@@ -1,0 +1,326 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: clip;
+  background: #f0ecec;
+}
+
+body {
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 1280x860 artboard like every other page, scaled to fit the viewport by snippets.js.
+   The original 1920x1080 design sits inside at 2/3 (1280x720), centered vertically. */
+.stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1280px;
+  height: 860px;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  background: #f0ecec; /* same page background as ABOUT ME / MY WORK pages */
+  overflow: clip;
+}
+
+.board {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(calc(2 / 3));
+  transform-origin: 0 0;
+}
+
+/* ---------- title block (stage coordinates, measured on imgs/intro/intro_snippets.jpg ×1.6) ---------- */
+.title {
+  position: absolute;
+  inset: 0 auto auto 0;
+  margin: 0;
+  font-family: "GmarketSans", sans-serif;
+  line-height: 1;
+  color: #ff5a00;
+  white-space: nowrap;
+}
+
+.title-about,
+.title-main {
+  position: absolute;
+}
+
+.title-about {
+  left: 70px;
+  top: 204px;
+  font-size: 50px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.title-main {
+  left: 239px;
+  top: 171px;
+  font-size: 89.4px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* overlaps the bottom of "YEARS AGO" */
+.title-script {
+  position: absolute;
+  left: 624px;
+  top: 223px;
+}
+
+.subtitle {
+  position: absolute;
+  left: 71px;
+  top: 276px;
+  margin: 0;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+.desc {
+  position: absolute;
+  left: 72px;
+  top: 310px;
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: #222;
+}
+
+/* ---------- carousel ---------- */
+.carousel {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.carousel > * {
+  pointer-events: auto;
+}
+
+.track {
+  list-style: none;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+    width 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+    height 0.5s cubic-bezier(0.33, 0, 0.2, 1),
+    opacity 0.5s ease;
+}
+
+.slide.no-anim {
+  transition: none;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.slide button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+.slide.is-center {
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+.caption {
+  position: absolute;
+  top: 882px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #333;
+  transition: opacity 0.25s ease;
+}
+
+.caption.is-fading {
+  opacity: 0;
+}
+
+.arrow {
+  position: absolute;
+  top: 952px;
+  width: 62px;
+  height: 62px;
+  margin-left: -31px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #2b2b2b;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.arrow svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow:hover,
+.arrow:focus-visible {
+  color: #fff;
+  background: #e8411b;
+  border-color: #e8411b;
+  transform: scale(1.06);
+  outline: none;
+}
+
+.arrow:active {
+  transform: scale(0.96);
+}
+
+.arrow-prev {
+  left: 645px;
+}
+
+.arrow-next {
+  left: 1275px;
+}
+
+/* ---------- modal ---------- */
+.modal {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 20, 20, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal.is-open {
+  opacity: 1;
+}
+
+.modal-box {
+  position: relative;
+  width: 760px;
+  max-height: 680px;
+  display: flex;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.33, 0, 0.2, 1);
+}
+
+.modal.is-open .modal-box {
+  transform: scale(1);
+}
+
+.modal-scroll {
+  width: 100%;
+  max-height: 680px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.modal-scroll img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: #e8411b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  background: #c7300d;
+  outline: none;
+}
+
+.modal-close svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .caption,
+  .modal,
+  .modal-box {
+    transition: none;
+  }
+}

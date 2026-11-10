@@ -1,0 +1,60 @@
+/* Shared by every page and the viewer (index.html).
+   Pages also load Pretendard from the CDN (see each <head>). */
+
+/* Gmarket Sans (free, G마켓) via the noonnu CDN mirror */
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff") format("woff");
+  font-weight: 300;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff") format("woff");
+  font-weight: 500;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "GmarketSans";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff") format("woff");
+  font-weight: 700;
+  font-display: block;
+}
+
+/* ---------- top-left label, same spot on every page (refs/slide_*.jpg) ---------- */
+.site-label {
+  position: absolute;
+  left: 67px;
+  top: 50px;
+  margin: 0;
+  z-index: 50;
+  font: 500 12.4px/1.2 "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  letter-spacing: 0.3px;
+  color: #444;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.site-label b {
+  font-weight: 700;
+  color: #222;
+}
+
+body:has([data-artboard]) {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* ---------- long pages: 1280px-wide artboard of a fixed height (--h) ----------
+   site.js scales it to the window width when the page is opened on its own;
+   inside the viewer the iframe is exactly 1280px wide, so the scale is 1. */
+[data-artboard] {
+  position: relative;
+  width: 1280px;
+  height: var(--h);
+  transform-origin: 0 0;
+  transform: scale(var(--scale, 1));
+  overflow: clip;
+}

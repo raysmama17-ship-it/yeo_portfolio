@@ -1,0 +1,119 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  touch-action: none;
+  background: #f1edee;
+}
+
+/* one 1280x860 screen, scaled to fit the window (viewer.js) */
+.viewer-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1280px;
+  height: 860px;
+  overflow: hidden;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+}
+
+.viewer-track {
+  width: 1280px;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.viewer-page {
+  position: relative;
+  width: 1280px;
+  height: 860px;
+  overflow: hidden;
+}
+
+/* full-height page; long pages move up inside their 860px screen */
+.viewer-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  will-change: transform;
+}
+
+.viewer-canvas iframe {
+  display: block;
+  width: 1280px;
+  border: 0;
+}
+
+/* ---------- right-side page indicator ---------- */
+.viewer-dots {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+  transform: translateY(-50%);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+}
+
+.viewer-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #c3bbbb;
+  cursor: pointer;
+  transition: height 0.4s cubic-bezier(0.3, 0.7, 0.2, 1), background-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viewer-dot::before {
+  /* larger hit area */
+  content: "";
+  position: absolute;
+  inset: -6px -8px;
+}
+
+.viewer-dot[aria-current="true"] {
+  height: 28px;
+  background: #ff5a00;
+}
+
+.viewer-dot:hover:not([aria-current="true"]) {
+  background: #8f8686;
+}
+
+/* page name next to the dot */
+.viewer-dot span {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background: rgba(34, 34, 34, 0.85);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(6px, -50%);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.viewer-dot:hover span,
+.viewer-dot:focus-visible span {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.viewer-dot:focus-visible {
+  outline: 2px solid #ff5a00;
+  outline-offset: 3px;
+}

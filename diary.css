@@ -1,0 +1,34 @@
+/* MY WORK-DIARY: placement of the work.css components, measured from refs/slide_diary.jpg */
+
+.di-title { --x: 63.0px; --y: 161.4px; --fs: 99.3px; --ls: -0.053em; --ls-light: -0.052em; --gap: 8px; }
+.di-calli { --x: 753px; --y: 214px; }
+.di-sub { --y: 272.2px; --fs: 30px; --ls: -0.01em; }
+.di-desc { --y: 317.4px; --fs: 17.5px; --lh: 27px; --ls: 0.012em; }
+.di-badges { --y: 385px; }
+
+.di-frame { left: 292px; top: 469px; width: 698px; height: 678px; padding: 12px; }
+.di-frame > img { width: 674px; height: 654px; object-position: 50% 0; }
+
+.di-note-a { left: 70px; top: 644px; width: 250px; height: 211px; --ls: -0.026em; }
+.di-note-b { left: 70px; top: 956px; width: 250px; height: 180px; --ls: -0.009em; }
+.di-note-c { left: 952px; top: 522px; width: 256px; height: 162px; --ls: -0.01em; }
+.di-note-a, .di-note-b, .di-note-c { --fs: 16px; --lh: 23px; }
+.di-note-a p { --x: 26px; --y: 24.4px; }
+.di-note-b p { --x: 26px; --y: 21.4px; }
+.di-note-c p { --x: 28px; --y: 23.4px; }
+
+.di-dark { left: 950px; top: 751px; width: 260px; height: 477px; --lh: 18px; --fs: 16px; --ls: -0.01em; --nfs: 36px; }
+.di-dark .n1 { --x: 25px; --y: 26.5px; }
+.di-dark .t1 { --x: 59px; --y: 32.4px; }
+.di-dark .n2 { --x: 23px; --y: 190.5px; }
+.di-dark .t2 { --x: 59px; --y: 194.4px; }
+.di-dark .n3 { --x: 22px; --y: 351.5px; }
+.di-dark .t3 { --x: 59px; --y: 356.4px; }
+.di-dark .s1 { --x: 58px; --y: 176px; --w: 174px; }
+.di-dark .s2 { --x: 58px; --y: 337px; --w: 174px; }
+
+.di-note-a .work-dot.is-orange { --ml: 2px; }
+
+.di-line-a { --x: 320px; --y: 644px; --w: 24px; }
+.di-line-b { --x: 320px; --y: 956px; --w: 24px; }
+.di-line-c { --x: 922px; --y: 522px; --w: 29px; }

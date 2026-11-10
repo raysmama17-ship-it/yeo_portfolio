@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABOUT ME — YEO SANGHEE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="aboutme.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <p class="site-label">UI/UX DESIGNER AND CREATOR - <b>YEOSANGHEE</b></p>
+
+    <!-- fixed left column (from refs/aboutme/slide01.jpg, label removed): ABOUT ME + Hello, intro copy, 연륜 + 감각 + AI -->
+    <img class="left" src="imgs/aboutme/left.png" alt="ABOUT ME. 세상이 기대하는 사람이 될 수 있게... 20년 넘게 쌓아온 감각으로, 화면뒤 숨어있는 사람의 마음을 설계합니다. 연륜 + 감각 + AI">
+
+    <div class="band" aria-hidden="true"></div>
+
+    <!-- one capsule + one main image per character; aboutme.js moves them between slots -->
+    <div class="cap" data-color="orange" aria-hidden="true"><div class="cap-thumb"><img src="imgs/aboutme/img01.png" alt=""></div></div>
+    <div class="cap" data-color="white" aria-hidden="true"><div class="cap-thumb"><img src="imgs/aboutme/img02.png" alt=""></div></div>
+    <div class="cap" data-color="black" aria-hidden="true"><div class="cap-thumb"><img src="imgs/aboutme/img03.png" alt=""></div></div>
+
+    <img class="main" data-color="orange" src="imgs/aboutme/img01.png" alt="흑백 사진 속 단발머리 여성">
+    <img class="main" data-color="white" src="imgs/aboutme/img02.png" alt="커피와 노트북을 든 3D 캐릭터">
+    <img class="main" data-color="black" src="imgs/aboutme/img03.png" alt="자전거를 타는 흑백 일러스트 소녀">
+
+    <section class="copy" data-color="orange">
+      <h2 class="copy-title">늙크크
+영크크</h2>
+      <p class="copy-body">흔히 감각을 가지고 나이듦과 젊음을
+나눈다. 하지만 시각은 개인적 취향일
+뿐 UX를 받아들이는 것은 크게 다르
+지 않으리라 생각한다.  니즈를 충족
+하면서 기능을 방해하지 않는 보기좋
+음을 추구하는 것, 새로움을 더해가는
+것, 그렇게 묵묵히, 열심히 가려한다.
+쉽지않던 리소스 부분에서 AI의 도움
+을 받아가며 디자인을 만들기보다는
+이야기하는 사람이 되고싶다.</p>
+    </section>
+    <section class="copy" data-color="white">
+      <h2 class="copy-title">밤샘이
+일상</h2>
+      <p class="copy-body">디자인의 폭을 넓혀 웹을 시작했고
+나랑 더 맞는다는 느낌이 들었다.
+처음으로 만든 창비 홈페이지를
+보고 삼성경제연구소에서 연락이
+왔고 들어가게되면서 나의 잠은
+반이 날아가버렸다.
+일과도 싸웠지만 내 완벽주의와의
+싸움이 더 힘들었다. 하지만 ‘최상의
+결과물’은 효율적인 프로세스와 자
+기관리가 함께 해야한다는 것을
+알게됐고 결과물은 대부분 긍정적인
+평가를 받았다.</p>
+    </section>
+    <section class="copy" data-color="black">
+      <h2 class="copy-title">글자와 여백
+편집디자인</h2>
+      <p class="copy-body">미대를 졸업한 오빠 작업실에
+종종 놀러가서 기웃거리다
+책과 인쇄물이 나오는 과정과
+맥을 능숙하게 다루는 오빠의
+모습에 호기심 반, 진심 반으로
+하나씩 배우기 시작했고
+오빠 작업실 한 귀퉁이에서 늦은
+시간까지 몰두하다가 대중교통이
+끊기면 자전거를 타고 집까지
+오면서 두려움도 없이 찬바람
+마저 상쾌하던 20대 그땐, 열정
+의 시작이었습니다.</p>
+    </section>
+
+    <nav class="minis" aria-label="화면 선택">
+      <button type="button" class="mini" data-color="black" aria-label="글자와 여백 편집디자인"></button>
+      <button type="button" class="mini" data-color="orange" aria-label="늙크크 영크크"></button>
+      <button type="button" class="mini" data-color="white" aria-label="밤샘이 일상"></button>
+    </nav>
+  </main>
+
+  <script src="site.js"></script>
+  <script src="aboutme.js"></script>
+</body>
+</html>

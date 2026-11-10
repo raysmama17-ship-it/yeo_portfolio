@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f0ecec; /* artboard background of tpls/t*.png */
+}
+
+/* 1280x860 artboard (size of tpls/t*.png), scaled to fit the viewport by about_me.js */
+.stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1280px;
+  height: 860px;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  background: #f0ecec;
+  overflow: clip;
+}
+
+.base {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Hero window: x 500-1280, y 0-740 of the artboard.
+   Slides leave/enter through the bottom edge, which fades out so nothing is cut hard. */
+.hero {
+  position: absolute;
+  left: 500px;
+  top: 0;
+  width: 780px;
+  height: 740px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 700px, transparent 740px);
+  mask-image: linear-gradient(to bottom, #000 700px, transparent 740px);
+}
+
+/* hero{n}.png = t{n}.png crop x 500-1280, y 100-700 */
+.hero-img {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  display: block;
+  visibility: hidden;
+}
+
+.hero-img.is-active {
+  visibility: visible;
+}
+
+.boxes {
+  position: absolute;
+  left: 86px; /* left edge of the copy above */
+  top: 612px; /* 24px below the "연륜 + 감각 + AI" badge */
+  display: flex;
+  gap: 12px;
+}
+
+.box {
+  width: 20px;
+  height: 20px;
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box-1 { background: #ff5a00; }
+.box-2 { background: #1e1e1e; }
+.box-3 { background: #9a9494; }
+
+.box:hover {
+  transform: scale(1.15);
+}
+
+.box:focus-visible {
+  outline: 2px solid #1e1e1e;
+  outline-offset: 3px;
+}
+
+.box[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px #f0ecec, 0 0 0 5px currentColor;
+}
+
+.box-1[aria-pressed="true"] { color: #ff5a00; }
+.box-2[aria-pressed="true"] { color: #1e1e1e; }
+.box-3[aria-pressed="true"] { color: #9a9494; }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABOUT ME — YEO SANGHEE</title>
+  <link rel="stylesheet" href="about_me.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <!-- t1.png without the hero area: label, ABOUT ME, left copy, logo -->
+    <img class="base" src="imgs/about/base.png" alt="ABOUT ME — UI/UX DESIGNER AND CREATOR, 연륜 + 감각 + AI">
+
+    <!-- hero area (centre character + right text) cut from t1/t2/t3 -->
+    <div class="hero" id="hero">
+      <img class="hero-img is-active" src="imgs/about/hero1.png" alt="흑백 사진 속 여성과 '복잡한 코드' 소개 글">
+      <img class="hero-img" src="imgs/about/hero2.png" alt="커피와 노트북을 든 3D 캐릭터와 '복잡한 코드' 소개 글">
+      <img class="hero-img" src="imgs/about/hero3.png" alt="자전거를 타는 소녀 일러스트와 '시작은 편집디자인' 소개 글">
+    </div>
+
+    <div class="boxes" role="group" aria-label="화면 선택">
+      <button type="button" class="box box-1" aria-label="첫 번째 화면" aria-pressed="true"></button>
+      <button type="button" class="box box-2" aria-label="두 번째 화면" aria-pressed="false"></button>
+      <button type="button" class="box box-3" aria-label="세 번째 화면" aria-pressed="false"></button>
+    </div>
+  </main>
+
+  <script src="about_me.js"></script>
+</body>
+</html>

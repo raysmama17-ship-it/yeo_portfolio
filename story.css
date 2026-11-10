@@ -1,0 +1,132 @@
+/* MY WORK-WEBSTORY: placement of the work.css components, measured from refs/slide_story.jpg */
+
+/* same proportions as the other MY WORK titles (the mockup's title was squashed vertically; not copied) */
+.st-title { --x: 63.3px; --y: 162.2px; --fs: 96.3px; --ls: -0.053em; --ls-light: -0.078em; --gap: 7px; }
+.st-calli { --x: 753px; --y: 214px; }
+.st-sub { --y: 272.2px; --fs: 30px; --fs2: 23.5px; --ls: -0.01em; }
+.st-desc { --y: 317.3px; --fs: 17.5px; --lh: 27.33px; --ls: 0.012em; }
+
+.st-txt {
+  left: 70px;
+  top: 435px;
+  width: 104px;
+  height: 30px;
+  padding: 0 0 4px 15px;
+  gap: 6px;
+  border-radius: 8px;
+  color: #111;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.st-txt::before {
+  margin-top: 3px;
+  border-width: 4.5px 0 4.5px 6px;
+  border-left-color: #fff;
+}
+
+.st-txt:hover,
+.st-txt:focus-visible {
+  color: #fff;
+}
+
+.st-txt:hover::before,
+.st-txt:focus-visible::before {
+  border-left-color: #ff5a00;
+}
+
+/* gray dotted road winding behind the cards */
+.st-road {
+  position: absolute;
+  left: 38px;
+  top: 464px;
+  width: 620px;
+  height: 1339px;
+  pointer-events: none;
+}
+
+.st-card {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.st-card .work-num {
+  --nfs: 88px;
+  font-family: "GmarketSans", sans-serif;
+  font-weight: 300;
+  color: #000;
+  -webkit-text-stroke: 1.3px #000; /* the mockup numerals are a little heavier than GmarketSans Light */
+}
+
+.st-card .work-card-img img {
+  position: absolute;
+  max-width: none;
+}
+
+.st-dark { --fs: 16px; --lh: 18px; --ls: -0.01em; }
+
+.st-card-1 { left: 428px; top: 522px; width: 772px; height: 352px; }
+.st-card-1 .i1 { left: 43px; top: 25px; width: 215px; height: 213px; }
+.st-card-1 .i1 img { left: -4px; top: -5px; width: 223px; height: 223px; }
+.st-card-1 .i2 { left: 277px; top: 25px; width: 219px; height: 213px; }
+.st-card-1 .i2 img { left: -1px; top: -1px; width: 224px; height: 224px; }
+.st-card-1 .i3 { left: 515px; top: 25px; width: 217px; height: 213px; }
+.st-card-1 .i3 img { left: 0px; top: -2px; width: 217px; height: 217px; }
+.st-card-1 .work-num { --x: 31.5px; --y: 258px; }
+.st-card-1 .work-bar { --x: 75px; --y: 320px; }
+.st-card-1 p { --x: 112px; --y: 253.9px; }
+
+.st-card-2 { left: 96px; top: 974px; width: 861px; height: 358px; }
+.st-card-2 .i1 { left: 39px; top: 19px; width: 230px; height: 320px; }
+.st-card-2 .i1 img { left: 0px; top: -10px; width: 230px; height: 332px; }
+.st-card-2 .i2 { left: 294px; top: 19px; width: 230px; height: 320px; }
+.st-card-2 .i2 img { left: -8px; top: -20px; width: 259px; height: 374px; }
+.st-card-2 .work-num { --x: 539px; --y: 260px; }
+.st-card-2 .work-bar { --x: 598px; --y: 323px; }
+.st-card-2 p { --x: 633px; --y: 54.9px; }
+
+.st-card-3 { left: 180px; top: 1411px; width: 315px; height: 566px; }
+.st-card-3 .i1 { left: 21px; top: 19px; width: 275px; height: 392px; }
+.st-card-3 .i1 img { left: -2px; top: -4px; width: 279px; height: 396px; }
+.st-card-3 .work-num { --x: 28px; --y: 469px; }
+.st-card-3 .work-bar { --x: 85px; --y: 531px; }
+.st-card-3 p { --x: 123px; --y: 426.9px; }
+
+.st-card-4 { left: 662px; top: 1439px; width: 444px; height: 735px; }
+.st-card-4 .i1 { left: 21px; top: 145px; width: 404px; height: 569px; }
+.st-card-4 .i1 img { left: -2px; top: -1px; width: 406px; height: 570px; }
+.st-card-4 .work-num { --x: 21px; --y: 51px; }
+.st-card-4 .work-bar { --x: 80px; --y: 112px; }
+.st-card-4 p { --x: 122px; --y: 32.9px; }
+
+/* GmarketSans Light "2" and "3" are ~12% wider than the mockup numerals: condense them so they end before the orange bar */
+.st-card-2 .work-num.is-italic,
+.st-card-3 .work-num.is-italic {
+  transform: skewX(-11deg) scaleX(0.89);
+}
+
+.st-dark-1 { left: 97px; top: 582px; width: 304px; height: 253px; }
+.st-dark-1 p { --x: 27px; --y: 29.4px; }
+.st-dark-2 { left: 983px; top: 1109px; width: 221px; height: 189px; }
+.st-dark-2 p { --x: 29px; --y: 30.4px; }
+.st-dark-3 { left: 329px; top: 2013px; width: 297px; height: 122px; }
+.st-dark-3 p { --x: 31px; --y: 25.4px; }
+
+.st-line-1 { --x: 401px; --y: 582px; --w: 49px; }
+.st-line-2 { --x: 935px; --y: 1297px; --w: 48px; }
+.st-line-3 { --x: 626px; --y: 2134px; --w: 48px; }
+
+.st-final {
+  left: 590px;
+  top: 1749px;
+  z-index: 2;
+  width: 69px;
+  height: 69px;
+  padding-bottom: 4px;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
