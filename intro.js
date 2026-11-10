@@ -9,7 +9,7 @@
     { key: "webstory", img: "imgs/intro/intro_webstory.jpg", href: "story.html", angle: -11, menu: "WORK <b>- WEBSTORY</b>", tag: "WORK<br><b>- WEBSTORY</b>" },
   ];
 
-  const INTRO_HOLD_MS = 3000; // intro screen before the title slides away
+  const INTRO_HOLD_MS = 2000; // intro screen before the title slides away
   const LIST_HOLD_MS = 3000; // straight list before it turns into the angle list
 
   // card centers per slot (artboard px), measured on refs/intro/intro_layered / intro_list / intro_anglelist.jpg
