@@ -12,6 +12,8 @@
   const track = document.getElementById("track");
   const dotsBox = document.getElementById("dots");
 
+  const slug = (file) => file.replace(/\.html$/, "");
+
   const pages = SITE.PAGES.map((p) => {
     const sec = document.createElement("section");
     sec.className = "viewer-page";
@@ -35,6 +37,7 @@
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "viewer-dot";
+    dot.dataset.page = slug(p.file);
     dot.setAttribute("aria-label", p.title);
     dot.innerHTML = `<span>${p.title}</span>`;
     dot.addEventListener("click", () => goTo(i));
@@ -73,7 +76,8 @@
   function render() {
     track.style.transform = `translateY(${-index * H}px)`;
     dots.forEach((dot, i) => dot.setAttribute("aria-current", String(i === index)));
-    history.replaceState(null, "", index ? `#${pages[index].file.replace(/\.html$/, "")}` : location.pathname);
+    document.body.dataset.page = slug(pages[index].file); // viewer.css: dark backdrop behind CONTACT
+    history.replaceState(null, "", index ? `#${slug(pages[index].file)}` : location.pathname);
     load(index);
     load(index + 1);
     load(index - 1);

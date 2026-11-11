@@ -5,6 +5,12 @@ body {
   overflow: hidden;
   touch-action: none;
   background: #f1edee;
+  transition: background-color 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* CONTACT fills the whole window with its own dark background */
+body[data-page="contact"] {
+  background: #1d1c1c;
 }
 
 /* one 1280x860 screen, scaled to fit the window (viewer.js) */
@@ -77,6 +83,12 @@ body {
   content: "";
   position: absolute;
   inset: -6px -8px;
+}
+
+/* CONTACT link: same dot, set 10px further below the page dots */
+.viewer-dot[data-page="contact"] {
+  margin-top: 10px;
+  background: #1d1c1c;
 }
 
 .viewer-dot[aria-current="true"] {

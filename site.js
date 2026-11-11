@@ -9,7 +9,8 @@
     { file: "snippets.html", title: "SURVIVING SNIPPETS", h: 860 },
     { file: "onepage.html", title: "WORK-ONEPAGE", h: 1955 },
     { file: "diary.html", title: "WORK-DIARY", h: 1311 },
-    { file: "story.html", title: "WORK-WEBSTORY", h: 2500 },
+    { file: "story.html", title: "WORK-WEBSTORY", h: 2324 },
+    { file: "contact.html", title: "CONTACT", h: 860 },
   ];
   const W = 1280;
 

@@ -1,0 +1,78 @@
+/* CONTACT: one 1280x860 screen on #1d1c1c, measured from refs/slide_contact.jpg */
+
+body:has(.contact) {
+  background: #1d1c1c;
+}
+
+.contact {
+  background: #1d1c1c;
+  color: #fff;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Malgun Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.contact .site-label,
+.contact .site-label b {
+  color: #8f8b8a;
+}
+
+.ct-title {
+  position: absolute;
+  left: 318.5px;
+  top: 313.5px;
+  margin: 0;
+  font: 700 97px / 1 "GmarketSans", sans-serif;
+  letter-spacing: -0.073em;
+  color: #ff5a00;
+  white-space: nowrap;
+}
+
+.ct-sub {
+  position: absolute;
+  left: 317px;
+  top: 421.5px;
+  margin: 0;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.033em;
+  white-space: nowrap;
+}
+
+/* thin orange divider between the heading and the text */
+.ct-bar {
+  position: absolute;
+  left: 612px;
+  top: 429px;
+  width: 3px;
+  height: 53px;
+  background: #ff5a00;
+}
+
+.ct-desc {
+  position: absolute;
+  left: 637px;
+  top: 424.5px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 21.5px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.ct-mail {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.ct-mail:hover,
+.ct-mail:focus-visible {
+  color: #ff5a00;
+}
+
+.ct-mail:focus-visible {
+  outline: 2px solid #ff5a00;
+  outline-offset: 3px;
+}
