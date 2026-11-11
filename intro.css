@@ -8,15 +8,10 @@ body {
   height: 100%;
 }
 
-/* staggered white dot grid of refs/intro/intro_first.jpg (period ~7.85px, dots on #eae5e5) */
+/* same plain page background as ABOUT ME / SURVIVING SNIPPETS */
 body {
   overflow: hidden;
-  background-color: #eae5e5;
-  background-image:
-    radial-gradient(circle, #fff 0 1px, rgba(255, 255, 255, 0) 1.8px),
-    radial-gradient(circle, #fff 0 1px, rgba(255, 255, 255, 0) 1.8px);
-  background-size: 7.85px 7.75px;
-  background-position: 0 0, 3.925px 3.875px;
+  background: #f0ecec;
 }
 
 /* 1280x860 artboard (size of refs/intro/*.jpg), scaled to fit the viewport by intro.js */
